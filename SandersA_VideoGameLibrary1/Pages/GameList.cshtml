@@ -1,0 +1,16 @@
+﻿@page
+@model GameListModel
+@{
+	ViewData["Title"] = "Your Games";
+}
+<h1 class="white-text">@ViewData["Title"]</h1>
+<h2 class="white-text">Game Count: @GameListModel.Games.Count</h2>
+
+<div class="flex-container">
+	@{
+		foreach(var game in GameListModel.Games)
+		{
+			<partial name="Partials/_VideoGamePartial" model="game"/>
+		}
+	}
+</div>

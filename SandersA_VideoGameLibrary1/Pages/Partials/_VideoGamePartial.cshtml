@@ -1,0 +1,32 @@
+﻿@using SandersA_VideoGameLibrary1.Data.Models
+@model VideoGame
+
+<div class="game-view">
+	<img class="box-art" src="@Model.Image" />
+	<div class="game-info">
+		<h2>@Model.Title - (@Model.Year)</h2>
+		<h4>Platform: @string.Join(", ", Model.Platforms).</h4>
+		<h4>Genre: @Model.Genre</h4>
+		<h4>Rating: @Model.Rating</h4>
+		@{
+			if (Model.LoanedTo != null && Model.LoanedTo != "")
+			{
+				<h3 class="fw-bold">Loaned to: @Model.LoanedTo</h3>
+				<h3 class="fw-bold">Loaned on: @Model.LoanDate</h3>
+
+				<form asp-page-handler="Return" method="post" asp-route-id="@Model.Id">
+					<button class="btn-loan justify-bottom justify-right" type="submit">Return Game</button>
+				</form>
+			}
+			else
+			{
+				<form asp-page-handler="Loan" method="post" asp-route-id="@Model.Id">
+					<input asp-for="@Model.NewLoan" class="stack-bottom" placeholder="Loan To" />
+					<br />
+					<input asp-for="@Model.NewLoanDate" type="date" value="@DateOnly.FromDateTime(DateTime.Now)" class="justify-bottom" />
+					<button class="btn-loan justify-bottom justify-right" type="submit">Loan Game</button>
+				</form>
+			}
+		}
+	</div>
+</div>

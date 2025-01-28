@@ -1,0 +1,111 @@
+html {
+  font-size: 14px;
+}
+
+@media (min-width: 768px) {
+  html {
+    font-size: 16px;
+  }
+}
+
+.btn:focus, .btn:active:focus, .btn-link.nav-link:focus, .form-control:focus, .form-check-input:focus {
+  box-shadow: 0 0 0 0.1rem white, 0 0 0 0.25rem #258cfb;
+}
+
+html {
+  position: relative;
+  min-height: 100%;
+}
+
+body {
+  margin-bottom: 60px;
+  background-color: rgb(70, 70, 70);
+}
+
+header, footer {
+    background-color: black;
+}
+
+.img-large {
+    max-width: 70%;
+    object-fit: contain;
+    padding: 20px;
+}
+
+.img-logo {
+    max-height: 50px;
+    object-fit: contain;
+    padding: 3px;
+}
+
+.white-text {
+    color: white !important;
+}
+
+.flex-container {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.left-side {
+    flex: 1;
+}
+
+.right-side {
+    flex: 2;
+}
+
+.justify-bottom {
+    position: absolute;
+    bottom: 0;
+}
+
+.stack-bottom {
+    position: absolute;
+    bottom: 30px;
+}
+
+.justify-right {
+    position: absolute;
+    right: 0;
+}
+
+.game-view {
+    display: flex;
+    width: 48%;
+    height: 350px;
+    padding: 20px;
+    margin: 10px;
+
+    background-color: rgb(12, 12, 12);
+
+    border: solid;
+    border-color: darkgoldenrod;
+    border-radius: 10px;
+}
+
+.box-art {
+    flex: 1;
+    max-height: 300px;
+    max-width: 220px;
+    width: auto;
+    object-fit: contain;
+    padding: 10px
+}
+
+.game-info {
+    position: relative;
+    flex:2;
+    color: white;
+}
+
+.btn-loan {
+    border: solid;
+    border-width: 4px;
+    border-color: darkblue;
+    border-radius: 5px;
+
+    background-color: darkgoldenrod;
+
+    color: white
+}
