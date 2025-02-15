@@ -45,14 +45,24 @@ header, footer {
 .flex-container {
     display: flex;
     flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+.flex-container-space {
+    flex: 1 1 auto;
 }
 
 .left-side {
     flex: 1;
+    position: relative;
+}
+
+.center {
+    flex: 2;
 }
 
 .right-side {
-    flex: 2;
+    flex: 3;
 }
 
 .justify-bottom {
@@ -65,15 +75,20 @@ header, footer {
     bottom: 30px;
 }
 
+.justify-center {
+    text-align: center;
+}
+
 .justify-right {
-    position: absolute;
-    right: 0;
+    float: right;
+    display: block;
+    clear: both;
 }
 
 .game-view {
     display: flex;
     width: 48%;
-    height: 350px;
+    height: 375px;
     padding: 20px;
     margin: 10px;
 
@@ -85,7 +100,6 @@ header, footer {
 }
 
 .box-art {
-    flex: 1;
     max-height: 300px;
     max-width: 220px;
     width: auto;
@@ -99,13 +113,37 @@ header, footer {
     color: white;
 }
 
+    
+.btn-search {
+    border: solid;
+    border-width: 3px;
+    border-color: darkgoldenrod;
+    border-radius: 5px;
+
+    margin: 3px;
+
+    background-color: black;
+
+    color: white
+}
+
 .btn-loan {
     border: solid;
     border-width: 4px;
     border-color: darkblue;
     border-radius: 5px;
 
+    margin: 3px;
+
     background-color: darkgoldenrod;
 
-    color: white
+    color: white;
+
+    position: absolute;
+    right: 0;
+}
+
+.input {
+    margin: 3px;
+    background-color: azure;
 }

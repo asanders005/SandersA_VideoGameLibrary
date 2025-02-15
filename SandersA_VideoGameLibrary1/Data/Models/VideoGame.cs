@@ -10,11 +10,17 @@ namespace SandersA_VideoGameLibrary1.Data.Models
         private static int _nextId = 1000;
 
         public int Id { get; } = _nextId++;
+        [Required]
         public string Title { get; set; }
+        [Range(1958, 2040)]
         public int Year { get; set; }
+        [MinLength(1, ErrorMessage = "At least one platform is required.")]
         public string[] Platforms { get; set; }
+        [Required]
         public string Genre { get; set; }
+        [Required]
         public string Rating { get; set; }
+        [Required]
         public string Image { get; set; }
         public string? LoanedTo { get; set; }
         public DateOnly? LoanDate { get; set; }
@@ -26,12 +32,12 @@ namespace SandersA_VideoGameLibrary1.Data.Models
 
         public VideoGame()
         {
-            Title = "Title";
-            Year = 0;
-            Platforms = new string[] { "null" };
-            Genre = "none";
-            Rating = "Not Rated";
-            Image = "null";
+            //    Title = "Title";
+            //    Year = 0;
+            //    Platforms = new string[] { "null" };
+            //    Genre = "none";
+            //    Rating = "Not Rated";
+            //    Image = "null";
         }
 
         public VideoGame(string title, int year, string[] platforms, string genre, string rating, string image)

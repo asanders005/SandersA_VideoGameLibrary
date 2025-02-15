@@ -2,7 +2,12 @@
 @model VideoGame
 
 <div class="game-view">
-	<img class="box-art" src="@Model.Image" />
+	<div class="left-side">
+		<img class="box-art" src="@Model.Image" alt="@Model.Title Box Art"/>
+		<form asp-page-handler="Delete" method="post" asp-route-id="@Model.Id">
+			<button class="btn-danger justify-bottom" type="submit">Delete</button>
+		</form>
+	</div>
 	<div class="game-info">
 		<h2>@Model.Title - (@Model.Year)</h2>
 		<h4>Platform: @string.Join(", ", Model.Platforms).</h4>
@@ -15,16 +20,16 @@
 				<h3 class="fw-bold">Loaned on: @Model.LoanDate</h3>
 
 				<form asp-page-handler="Return" method="post" asp-route-id="@Model.Id">
-					<button class="btn-loan justify-bottom justify-right" type="submit">Return Game</button>
+					<button class="btn-loan justify-bottom" type="submit">Return Game</button>
 				</form>
 			}
 			else
 			{
 				<form asp-page-handler="Loan" method="post" asp-route-id="@Model.Id">
-					<input asp-for="@Model.NewLoan" class="stack-bottom" placeholder="Loan To" />
+					<input class="input stack-bottom" asp-for="@Model.NewLoan" placeholder="Loan To" />
 					<br />
-					<input asp-for="@Model.NewLoanDate" type="date" value="@DateOnly.FromDateTime(DateTime.Now)" class="justify-bottom" />
-					<button class="btn-loan justify-bottom justify-right" type="submit">Loan Game</button>
+					<input class="input justify-bottom" asp-for="@Model.NewLoanDate" type="date" value="@DateOnly.FromDateTime(DateTime.Now)" />
+					<button class="btn-loan justify-bottom" type="submit">Loan Game</button>
 				</form>
 			}
 		}

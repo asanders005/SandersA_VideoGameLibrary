@@ -1,16 +1,86 @@
-﻿@page
+﻿@page "{SearchKey=}"
 @model GameListModel
 @{
 	ViewData["Title"] = "Your Games";
 }
-<h1 class="white-text">@ViewData["Title"]</h1>
-<h2 class="white-text">Game Count: @GameListModel.Games.Count</h2>
+<div class="flex-container flex-container-space">
+	<div>
+		<div>
+			<h2 class="white-text">Add a Game</h2>
+		</div>
+		<div>
+			<form asp-page-handler="Add" method="post">
+				<div>
+					<label class="white-text">Title</label>
+					<input class="input" asp-for="@Model.NewGame.Title" placeholder="Title..." />
+					<span asp-validation-for="@Model.NewGame.Title" class="text-danger"></span>
+				</div>
+				<div>
+					<label class="white-text">Year</label>
+					<input class="input" asp-for="@Model.NewGame.Year" placeholder="Year..." />
+					<span asp-validation-for="@Model.NewGame.Year" class="text-danger"></span>
+				</div>
+				<div>
+					<label class="white-text">Platform</label>
+					<input class="input" asp-for="@Model.NewGame.Platforms" placeholder="Platform..." />
+					<span asp-validation-for="@Model.NewGame.Platforms" class="text-danger"></span>
+				</div>
+				<div>
+					<label class="white-text">Genre</label>
+					<input class="input" asp-for="@Model.NewGame.Genre" placeholder="Genre..." />
+					<span asp-validation-for="@Model.NewGame.Genre" class="text-danger"></span>
+				</div>
+				<div>
+					<label class="white-text">Rating</label>
+					<input class="input" asp-for="@Model.NewGame.Rating" placeholder="Rating..." />
+					<span asp-validation-for="@Model.NewGame.Rating" class="text-danger"></span>
+				</div>
+				<div>
+					<label class="white-text">Image URL</label>
+					<input class="input" asp-for="@Model.NewGame.Image" placeholder="Image URL..." />
+					<span asp-validation-for="@Model.NewGame.Image" class="text-danger"></span>
+				</div>
+				<button class="btn-search" type="submit">Add</button>
+			</form>
+		</div>
+	</div>
+	<div>
+		<h1 class="white-text justify-center">@ViewData["Title"]</h1>
+		<h2 class="white-text justify-center">Game Count: @Model.Games.Count</h2>
+	</div>
+	<div>
+		<h3 class="white-text justify-right">Search</h3>
+		<form class="justify-right" asp-page-handler="Search" method="post">
+			<div>
+			<input class="input" asp-for="@Model.SearchKey" placeholder="Search..." />
+			</div>
+			<button class="btn-search justify-right" type="submit">Search</button>
+		</form>
+		<h3 class="white-text justify-right">Filter</h3>
+		<form class="justify-right" asp-page-handler="Filter" method="post">
+			<div>
+				<input class="input" asp-for="@Model.FilterGenre" placeholder="Genre..." />
+			</div>
+			<div>
+				<input class="input" asp-for="@Model.FilterPlatform" placeholder="Platform..." />
+			</div>
+			<div>
+				<input class="input" asp-for="@Model.FilterRating" placeholder="Rating..." />
+			</div>
+			<button class="btn-search justify-right" type="submit">Filter</button>
+		</form>
+	</div>
+</div>
 
 <div class="flex-container">
 	@{
-		foreach(var game in GameListModel.Games)
+		foreach (var game in Model.Games)
 		{
-			<partial name="Partials/_VideoGamePartial" model="game"/>
+			<partial name="Partials/_VideoGamePartial" model="game" />
 		}
 	}
 </div>
+
+@section Scripts {
+	<partial name="_ValidationScriptsPartial" />
+}
