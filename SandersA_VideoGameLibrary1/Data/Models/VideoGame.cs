@@ -7,9 +7,7 @@ namespace SandersA_VideoGameLibrary1.Data.Models
 {
     public class VideoGame
     {
-        private static int _nextId = 1000;
-
-        public int Id { get; } = _nextId++;
+        public int Id { get; }
         [Required]
         public string Title { get; set; }
         [Range(1958, 2040)]
